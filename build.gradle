@@ -1,0 +1,24 @@
+plugins {id 'java'}
+
+group 'tools.asuna'
+version '1.0'
+
+repositories {mavenCentral()}
+
+dependencies {
+    implementation 'me.tongfei:progressbar:0.9.3'
+    implementation 'org.json:json:20220320'
+    implementation 'com.diogonunes:JColor:5.5.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'org.mindrot:jbcrypt:0.4'
+    implementation 'net.java.dev.jna:jna:5.11.0'
+    implementation 'net.java.dev.jna:jna-platform:5.11.0'
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+}
+
+jar {
+    manifest {attributes 'Main-Class': 'tools.asuna.manager.Main'}
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+}
